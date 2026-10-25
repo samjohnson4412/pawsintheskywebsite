@@ -13,7 +13,7 @@ interface Props { compact?: boolean; id?: string; role?: string }
 const { compact = false, id = 'quote-form', role = '' } = Astro.props;
 
 const ROLES = ['Pet owner (sending)', 'Pet owner (receiving)', 'Breeder', 'Rescue or shelter', 'Other'];
-const SPECIES = ['Dog', 'Cat', 'Other'];
+const SPECIES = ['Dog', 'Cat'];
 const HANDOFF = [
   'Airport to airport',
   'Door to door',

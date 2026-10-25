@@ -20,7 +20,7 @@ export const FAQ_BASICS: Faq[] = [
   },
   {
     q: 'Can a bigger dog fly in the cabin?',
-    a: 'On select routes, yes: some flights let a larger dog ride in the cabin, out of a carrier, on the floor in front of a seat bought for them. Tell us where your dog is going and we’ll say whether your route is one of them. Your dog still never goes in cargo.',
+    a: 'On select routes, yes: some flights let a larger dog ride in the cabin, out of a carrier, on the floor in front of a seat bought for them. The dog’s seat is included in your quote. Tell us where your dog is going and we’ll say whether your route is one of them. Your dog still never goes in cargo.',
   },
   {
     q: 'How will I know my pet is okay during the trip?',
@@ -41,6 +41,10 @@ export const FAQ_BASICS: Faq[] = [
 ];
 
 export const FAQ_PREP: Faq[] = [
+  {
+    q: 'Do you fly pets internationally?',
+    a: 'Yes. International trips take more paperwork: each country sets its own entry rules, and many want a health certificate endorsed by the USDA, a microchip, vaccinations given a set time before travel, or an import permit. We help you work through it, so start early — some countries need weeks or months of lead time.',
+  },
   {
     q: 'What paperwork does my pet need?',
     a: 'A health certificate (also called a CVI) from a licensed vet, and a rabies vaccination if your pet is old enough to have one. Most airlines and states want the health certificate issued within 10 days of travel, so book the vet visit for the week before. We tell you the exact rules for your route when we quote.',

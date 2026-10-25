@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ReviewList from '../components/ReviewList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { REVIEWS } from '../data/reviews';
+
+const crumbs = [{ href: '/reviews/', label: 'Reviews' }];
+---
+
+<BaseLayout
+  title="Reviews"
+  description="What owners and new families say about flying their dogs and cats with Paws In The Sky. Reviews from CitizenShipper."
+  crumbs={crumbs}
+>
+  <PageHero eyebrow="Reviews" title="What families say" crumbs={crumbs}
+    lede="Every review below was left on CitizenShipper, the pet transport marketplace where many of our customers first find us." />
+  <section class="section">
+    <div class="wrap"><ReviewList reviews={REVIEWS} /></div>
+  </section>
+  <CtaBand />
+</BaseLayout>

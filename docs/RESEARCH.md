@@ -37,6 +37,13 @@ are deliberately left out.
 - Larger dogs: can fly in the cabin on select routes. Don't name the airline on the site.
 - Ground transport is only to and from the airports — no road-only trips.
 - Logo rights are held in writing.
+- Larger dogs: the dog's seat is included in the quote.
+- International: yes, and we help with the paperwork.
+- Pets other than dogs and cats: no.
+- NGLCC certification: mention briefly on /about/.
+- About 20 trips flown — not to be mentioned on the site.
+- Reviews: eight CitizenShipper reviews pasted by Sam, all 5-star,
+  2021–2023. Copied into `src/data/reviews.ts`.
 - **CitizenShipper.** Background screening activated October 2020; insurance
   verification complete 2025-06-21.
 

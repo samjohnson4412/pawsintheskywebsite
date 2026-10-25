@@ -24,8 +24,9 @@ Business facts and credentials live in `src/consts.ts`; FAQ answers in
   traces to Sam's own quotes or the Flight Nanny intake form —
   `docs/RESEARCH.md` lists the sources. Don't add a guarantee, a turnaround
   time or a capability because it sounds good.
-- **No invented social proof.** No testimonials, trip counts, review scores or
-  "years of experience" unless Sam supplies them. The 2025 business plan's
+- **No invented social proof.** Reviews come only from Sam's CitizenShipper
+  profile (`src/data/reviews.ts`), quoted word for word. Don't publish a
+  trip count (Sam's call) or a star rating, and don't add Review schema. The 2025 business plan's
   Paws section was AI-drafted and aspirational (pet cams, franchising,
   international) — it is not a source of facts.
 - **No prices.** Every trip is quoted. Not the deposit amount, not the

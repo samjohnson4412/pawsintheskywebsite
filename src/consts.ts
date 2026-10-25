@@ -11,7 +11,7 @@ export const ORG = {
   city: 'Tampa',
   region: 'FL',
   /** No street address is published: the registered address is a residence. */
-  areaServed: ['United States'],
+  areaServed: ['United States', 'International'],
   /**
    * Forwarded by Cloudflare Email Routing (CLOUDFLARE.md). It bounces until
    * that is set up, so do that before the domain goes live.
@@ -48,6 +48,7 @@ export const NAV = [
   { href: '/how-it-works/', label: 'How it works' },
   { href: '/breeders/', label: 'Breeders' },
   { href: '/preparing-your-pet/', label: 'Preparing your pet' },
+  { href: '/reviews/', label: 'Reviews' },
   { href: '/faq/', label: 'FAQ' },
   { href: '/about/', label: 'About' },
 ] as const;
@@ -77,6 +78,7 @@ export const FOOTER_LINKS = [
     heading: 'Company',
     links: [
       { href: '/about/', label: 'About us' },
+      { href: '/reviews/', label: 'Reviews' },
       { href: 'https://crossroadstravel.co/', label: 'Crossroads Travel' },
     ],
   },
