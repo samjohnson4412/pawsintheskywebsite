@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import FaqList from '../components/FaqList.astro';
-import { CREDENTIALS } from '../consts';
+import { CREDENTIALS, ORG } from '../consts';
 import { FAQ_BASICS } from '../data/faqs';
 import { REVIEWS } from '../data/reviews';
 import { PHOTOS } from '../data/photos';
@@ -103,7 +103,7 @@ const faqs = FAQ_BASICS.slice(0, 5);
         <h2>“He texted the whole entire journey.”</h2>
       </div>
       <ReviewList reviews={REVIEWS.filter((r) => r.featured)} />
-      <p class="more-reviews"><a href="/reviews/">Read all reviews</a></p>
+      <p class="more-reviews"><a href="/reviews/">Read all reviews</a> · <a href={ORG.citizenShipper} rel="noopener">on CitizenShipper</a></p>
     </div>
   </section>
 

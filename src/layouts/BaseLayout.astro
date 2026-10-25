@@ -41,7 +41,7 @@ const business = {
   address: { '@type': 'PostalAddress', addressLocality: ORG.city, addressRegion: ORG.region, addressCountry: 'US' },
   areaServed: ORG.areaServed.map((name) => ({ '@type': 'Place', name })),
   parentOrganization: { '@type': 'Organization', name: ORG.parent },
-  sameAs: Object.values(ORG.social).filter(Boolean),
+  sameAs: [...Object.values(ORG.social), ORG.citizenShipper].filter(Boolean),
 };
 
 const graph: Record<string, unknown>[] = [business, ...schema];

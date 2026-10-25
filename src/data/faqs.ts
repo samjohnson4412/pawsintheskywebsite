@@ -20,7 +20,7 @@ export const FAQ_BASICS: Faq[] = [
   },
   {
     q: 'Can a bigger dog fly in the cabin?',
-    a: 'On select routes, yes: some flights let a larger dog ride in the cabin, out of a carrier, on the floor in front of a seat bought for them. The dog’s seat is included in your quote. Tell us where your dog is going and we’ll say whether your route is one of them. Your dog still never goes in cargo.',
+    a: 'On select routes, yes: some flights let a larger dog ride in the cabin, out of a carrier, on the floor in front of a seat bought for them. The dog’s seat is included in your quote. See the cities on our larger dogs page, or tell us where your dog is going and we’ll check. Your dog still never goes in cargo.',
   },
   {
     q: 'How will I know my pet is okay during the trip?',

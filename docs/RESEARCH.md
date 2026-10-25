@@ -43,7 +43,11 @@ are deliberately left out.
 - NGLCC certification: mention briefly on /about/.
 - About 20 trips flown — not to be mentioned on the site.
 - Reviews: eight CitizenShipper reviews pasted by Sam, all 5-star,
-  2021–2023. Copied into `src/data/reviews.ts`.
+  2021–2023. Copied into `src/data/reviews.ts`. Profile:
+  https://app.citizenshipper.com/profile/samuel-j/235370
+- Larger-dog routes: from a route map Sam supplied. Listed by city on
+  `/larger-dogs/`; the map itself and the airline's name are not used.
+- Photo consent for the four puppy photos: confirmed.
 - **CitizenShipper.** Background screening activated October 2020; insurance
   verification complete 2025-06-21.
 

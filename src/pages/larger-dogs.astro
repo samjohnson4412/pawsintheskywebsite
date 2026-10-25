@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqList from '../components/FaqList.astro';
+import { LARGE_DOG_REGIONS } from '../data/large-dog-routes';
+
+const crumbs = [{ href: '/larger-dogs/', label: 'Larger dogs' }];
+const faqs = [
+  {
+    q: 'How does a larger dog fly in the cabin?',
+    a: 'On select routes, a dog too big for an under-seat carrier can ride out of a carrier, on the floor in front of a seat we buy for them, with their courier in the seat beside them. The dog’s seat is included in your quote.',
+  },
+  {
+    q: 'Is there a size limit?',
+    a: 'Yes, and the rules can change, so we confirm your dog’s weight and size against the current limit before we quote. Tell us your dog’s weight and breed when you ask.',
+  },
+  {
+    q: 'My route isn’t listed. What can you do?',
+    a: 'If your dog fits an under-seat carrier, we can fly almost any route. If not, the options depend on where you are: sometimes the nearest listed city is a short drive away, and door-to-door service can cover that leg. Ask and we’ll tell you honestly.',
+  },
+];
+---
+
+<BaseLayout
+  title="Larger Dogs in the Cabin — Select Routes"
+  description="Flying a dog too big for an under-seat carrier? On select routes, Paws In The Sky flies larger dogs in the cabin, never cargo, with the dog’s own seat included in the quote."
+  crumbs={crumbs}
+  faqs={faqs}
+>
+  <PageHero
+    eyebrow="Larger dogs"
+    title="Larger dogs can fly in the cabin, on select routes"
+    lede="Too big for a carrier under the seat isn’t always too big for the cabin. Between the cities below, your dog can ride at our feet on a seat we buy for them. Still never cargo."
+    crumbs={crumbs}
+  >
+    <div class="btn-row"><a class="btn btn--light" href="/quote/">Check my route</a></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Where larger dogs can fly</h2>
+        <p class="muted">
+          Not every city connects to every other, and routes change. Tell us both ends of the trip and we’ll
+          confirm whether there’s a flight for your dog.
+        </p>
+      </div>
+      <div class="regions">
+        {LARGE_DOG_REGIONS.map((r) => (
+          <div class="card">
+            <h3>{r.region}</h3>
+            <ul>{r.places.map((p) => <li>{p}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FaqList faqs={faqs} title="Questions about larger dogs" />
+  <CtaBand title="Tell us about your dog." body="Breed, weight, and where they’re going. We’ll check the route and send one price, the dog’s seat included." />
+</BaseLayout>
+
+<style>
+  .regions { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+  .regions ul { list-style: none; padding: 0; margin: 0; color: var(--color-text-muted); }
+  .regions li + li { margin-top: 0.3rem; }
+</style>

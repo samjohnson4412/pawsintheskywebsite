@@ -21,6 +21,8 @@ export const ORG = {
   phone: '(813) 921-5733',
   phoneHref: '+18139215733',
   owner: 'Sam Johnson',
+  /** Public profile where the reviews on /reviews/ were posted. */
+  citizenShipper: 'https://app.citizenshipper.com/profile/samuel-j/235370',
   social: {
     facebook: '',
     instagram: '',
@@ -60,6 +62,7 @@ export const FOOTER_LINKS = [
     heading: 'Services',
     links: [
       { href: '/flight-nanny/', label: 'In-cabin flight nanny' },
+      { href: '/larger-dogs/', label: 'Larger dogs' },
       { href: '/breeders/', label: 'For breeders' },
       { href: '/how-it-works/', label: 'How it works' },
       { href: '/quote/', label: 'Request a quote' },

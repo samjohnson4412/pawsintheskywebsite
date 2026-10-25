@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import ReviewList from '../components/ReviewList.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { REVIEWS } from '../data/reviews';
+import { ORG } from '../consts';
 
 const crumbs = [{ href: '/reviews/', label: 'Reviews' }];
 ---
@@ -14,7 +15,9 @@ const crumbs = [{ href: '/reviews/', label: 'Reviews' }];
   crumbs={crumbs}
 >
   <PageHero eyebrow="Reviews" title="What families say" crumbs={crumbs}
-    lede="Every review below was left on CitizenShipper, the pet transport marketplace where many of our customers first find us." />
+    lede="Every review below was left on CitizenShipper, the pet transport marketplace where many of our customers first find us.">
+    <div class="btn-row"><a class="btn btn--ghost" href={ORG.citizenShipper} rel="noopener">See them on CitizenShipper</a></div>
+  </PageHero>
   <section class="section">
     <div class="wrap"><ReviewList reviews={REVIEWS} /></div>
   </section>

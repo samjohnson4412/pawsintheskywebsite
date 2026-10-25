@@ -9,7 +9,7 @@ an image — see the Images section of `CLAUDE.md`.
 | `public/brand/og-default.png` | Social share image | Rendered from the logo above and DejaVu Sans Bold | Owned; DejaVu fonts are free licence | 2026-10-25 |
 | `public/favicon.svg` | Paw icon | Drawn for this site | Owned | 2026-10-25 |
 | Page-hero orbit | Inline SVG | Drawn for this site, after the logo's orbit swoosh | Owned | 2026-10-25 |
-| `public/photos/puppy-corgi.webp` | Corgi puppy in a carrier (home hero) | Taken by Sam on a Paws In The Sky trip; sent by Sam for the site | Owned (Sam's photo). Owner consent to marketing use: per intake form — **TODO(sam): confirm** | 2026-10-25 |
+| `public/photos/puppy-corgi.webp` | Corgi puppy in a carrier (home hero) | Taken by Sam on a Paws In The Sky trip; sent by Sam for the site | Owned (Sam's photo). Owner said yes to marketing use on the intake form; Sam confirmed 2026-10-25 | 2026-10-25 |
 | `public/photos/puppy-chocolate.webp` | Chocolate puppy in a carrier (home) | As above | As above | 2026-10-25 |
 | `public/photos/puppy-black.webp` | Black puppy in a carrier at night (home, /flight-nanny/) | As above | As above | 2026-10-25 |
 | `public/photos/puppy-doodle.webp` | Red doodle puppy in a carrier (home, /breeders/) | As above | As above | 2026-10-25 |
