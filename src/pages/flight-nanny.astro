@@ -5,6 +5,7 @@ import CtaBand from '../components/CtaBand.astro';
 import FaqList from '../components/FaqList.astro';
 import { CREDENTIALS } from '../consts';
 import { FAQ_BASICS } from '../data/faqs';
+import { PHOTOS } from '../data/photos';
 
 const crumbs = [{ href: '/flight-nanny/', label: 'Flight nanny' }];
 const faqs = FAQ_BASICS.filter((f) => /size|bigger|delayed|home/i.test(f.q));
@@ -40,6 +41,7 @@ const faqs = FAQ_BASICS.filter((f) => /size|bigger|delayed|home/i.test(f.q));
         </ul>
       </div>
       <div class="prose">
+        <img class="photo" src={PHOTOS.black.src} alt={PHOTOS.black.alt} width="800" height="1000" loading="lazy" />
         <h2>Why a person instead of cargo</h2>
         <p>
           In the cabin your pet is at normal cabin temperature and pressure, a few inches from someone
@@ -69,4 +71,6 @@ const faqs = FAQ_BASICS.filter((f) => /size|bigger|delayed|home/i.test(f.q));
 <style>
   .top { align-items: start; gap: 2.5rem; }
   .top h2:first-child { margin-top: 0; }
+  .photo { display: block; width: 100%; max-height: 340px; object-fit: cover; object-position: 50% 35%; border-radius: var(--radius); margin-bottom: 1.5rem; }
+  .photo + h2 { margin-top: 0; }
 </style>

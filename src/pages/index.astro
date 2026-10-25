@@ -5,6 +5,7 @@ import FaqList from '../components/FaqList.astro';
 import { CREDENTIALS } from '../consts';
 import { FAQ_BASICS } from '../data/faqs';
 import { REVIEWS } from '../data/reviews';
+import { PHOTOS } from '../data/photos';
 import ReviewList from '../components/ReviewList.astro';
 
 const INCLUDED = [
@@ -40,23 +41,9 @@ const faqs = FAQ_BASICS.slice(0, 5);
           {CREDENTIALS.liabilityInsurance && <span class="badge">{CREDENTIALS.liabilityInsurance} liability insurance</span>}
         </p>
       </div>
-      <div class="art" aria-hidden="true">
-        <svg viewBox="0 0 420 320">
-          <defs>
-            <linearGradient id="sky" x1="0" x2="1"><stop offset="0" stop-color="#48abda" /><stop offset="1" stop-color="#2d61ad" /></linearGradient>
-          </defs>
-          <circle cx="210" cy="160" r="128" fill="#e5eef9" />
-          <ellipse cx="210" cy="168" rx="200" ry="52" transform="rotate(-10 210 168)" fill="none" stroke="url(#sky)" stroke-width="7" stroke-linecap="round" stroke-dasharray="560 70" />
-          <g fill="url(#sky)" transform="translate(150 92)">
-            <ellipse cx="30" cy="20" rx="13" ry="18" /><ellipse cx="90" cy="20" rx="13" ry="18" />
-            <ellipse cx="4" cy="58" rx="11" ry="15" transform="rotate(-20 4 58)" /><ellipse cx="116" cy="58" rx="11" ry="15" transform="rotate(20 116 58)" />
-            <path d="M60 52c-22 0-42 28-42 45 0 14 13 17 22 14s12-6 20-6 11 3 20 6 22 0 22-14c0-17-20-45-42-45z" />
-          </g>
-          <g transform="translate(330 104) rotate(-14)" fill="#2d61ad">
-            <path d="M-34 0c0-4 4-6 10-6h40l14-14h8l-6 14h14l6-6h5l-3 12 3 12h-5l-6-6h-14l6 14h-8l-14-14h-40c-6 0-10-2-10-6z" />
-          </g>
-        </svg>
-      </div>
+      <figure class="hero-photo">
+        <img src={PHOTOS.corgi.src} alt={PHOTOS.corgi.alt} width="800" height="1000" fetchpriority="high" />
+      </figure>
     </div>
   </section>
 
@@ -69,6 +56,17 @@ const faqs = FAQ_BASICS.slice(0, 5);
       <div class="grid">
         {INCLUDED.map((i) => (
           <div class="card"><h3>{i.title}</h3><p>{i.body}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Recent passengers</p>
+      <div class="passengers">
+        {[PHOTOS.chocolate, PHOTOS.black, PHOTOS.doodle].map((ph) => (
+          <img src={ph.src} alt={ph.alt} width="800" height="1000" loading="lazy" />
         ))}
       </div>
     </div>
@@ -119,11 +117,15 @@ const faqs = FAQ_BASICS.slice(0, 5);
   .grid-hero { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
   .home-hero h1 { max-width: 17ch; }
   .reassure { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .art svg { width: 100%; max-width: 440px; display: block; margin-inline: auto; }
+  .hero-photo { margin: 0; max-width: 400px; justify-self: center; }
+  .hero-photo img { display: block; width: 100%; height: auto; border-radius: 28px; box-shadow: var(--shadow); }
   @media (max-width: 860px) {
     .grid-hero { grid-template-columns: 1fr; }
-    .art { max-width: 280px; margin-inline: auto; order: -1; }
+    .hero-photo { max-width: 240px; order: -1; }
   }
+  .passengers { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+  .passengers img { width: 100%; height: auto; border-radius: var(--radius); display: block; }
+  @media (max-width: 600px) { .passengers { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; } }
   .split { align-items: center; gap: 2.5rem; }
   .more-reviews { margin-top: 1.5rem; font-weight: 600; }
 </style>

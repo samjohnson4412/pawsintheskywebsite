@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import QuoteForm from '../components/QuoteForm.astro';
+import { PHOTOS } from '../data/photos';
 
 const crumbs = [{ href: '/breeders/', label: 'Breeders' }];
 ---
@@ -35,6 +36,7 @@ const crumbs = [{ href: '/breeders/', label: 'Breeders' }];
         </p>
       </div>
       <div>
+        <img class="photo" src={PHOTOS.doodle.src} alt={PHOTOS.doodle.alt} width="800" height="1000" loading="lazy" />
         <h2 class="h3">Quote a delivery</h2>
         <QuoteForm id="breeder-form" role="Breeder" compact />
       </div>
@@ -46,4 +48,5 @@ const crumbs = [{ href: '/breeders/', label: 'Breeders' }];
   .top { align-items: start; gap: 2.5rem; }
   .top h2:first-child { margin-top: 0; }
   .h3 { font: 650 var(--step-1)/1.2 var(--font-body); margin-bottom: 1rem; }
+  .photo { display: block; width: 100%; max-height: 360px; object-fit: cover; object-position: 50% 30%; border-radius: var(--radius); margin-bottom: 1.5rem; }
 </style>
