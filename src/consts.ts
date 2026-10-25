@@ -32,13 +32,15 @@ export const ORG = {
  * reaches the page. Source for each is in docs/RESEARCH.md.
  */
 export const CREDENTIALS = {
-  /** USDA APHIS Animal Care, from AnimalCare@usda.gov, 2026-07-30. */
+  /** Class T (carrier). USDA APHIS Animal Care, AnimalCare@usda.gov, 2026-07-30. */
   usdaCertificate: '58-T-1107',
   /**
-   * Sam's May 2025 quote says "$1,000,000 of liability insurance".
-   * TODO(sam): confirm the policy is current before this is shown.
+   * Class H (intermediate handler). Sam confirmed the registration
+   * 2026-10-25. TODO(sam): the certificate number. See docs/ASKS.md.
    */
-  liabilityInsurance: '',
+  usdaClassH: '',
+  /** Confirmed current by Sam, 2026-10-25. */
+  liabilityInsurance: '$1,000,000',
 } as const;
 
 export const NAV = [

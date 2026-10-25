@@ -26,7 +26,7 @@ const faqs = FAQ_BASICS.slice(0, 5);
         <p class="eyebrow">Pet flight nanny · Tampa, FL</p>
         <h1>Your pet flies in the cabin, with a person, the whole way.</h1>
         <p class="lede">
-          We fly with your dog or cat as a passenger: in a carrier at our feet, never in cargo.
+          We fly with your dog or cat as a passenger: at our feet, never in cargo.
           You get photo updates and live tracking from pickup to the hand-off at the other end.
         </p>
         <div class="btn-row">
@@ -34,7 +34,8 @@ const faqs = FAQ_BASICS.slice(0, 5);
           <a class="btn btn--ghost" href="/how-it-works/">How it works</a>
         </div>
         <p class="reassure">
-          {CREDENTIALS.usdaCertificate && <span class="badge">USDA-registered transporter · {CREDENTIALS.usdaCertificate}</span>}
+          {CREDENTIALS.usdaCertificate && <span class="badge">USDA-registered · {CREDENTIALS.usdaCertificate}</span>}
+          {CREDENTIALS.liabilityInsurance && <span class="badge">{CREDENTIALS.liabilityInsurance} liability insurance</span>}
         </p>
       </div>
       <div class="art" aria-hidden="true">
@@ -104,7 +105,7 @@ const faqs = FAQ_BASICS.slice(0, 5);
   .home-hero { padding-block: clamp(3rem, 7vw, 6rem); background: linear-gradient(180deg, var(--white), var(--sand-100)); }
   .grid-hero { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
   .home-hero h1 { max-width: 17ch; }
-  .reassure { margin-top: 1.5rem; }
+  .reassure { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .art svg { width: 100%; max-width: 440px; display: block; margin-inline: auto; }
   @media (max-width: 860px) {
     .grid-hero { grid-template-columns: 1fr; }

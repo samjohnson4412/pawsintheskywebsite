@@ -7,7 +7,7 @@ import { CREDENTIALS } from '../consts';
 import { FAQ_BASICS } from '../data/faqs';
 
 const crumbs = [{ href: '/flight-nanny/', label: 'Flight nanny' }];
-const faqs = FAQ_BASICS.filter((f) => /size|delayed|home/i.test(f.q));
+const faqs = FAQ_BASICS.filter((f) => /size|bigger|delayed|home/i.test(f.q));
 ---
 
 <BaseLayout
@@ -45,14 +45,15 @@ const faqs = FAQ_BASICS.filter((f) => /size|delayed|home/i.test(f.q));
           watching them. There’s no crate in a hold, no warehouse wait, no handover between cargo crews.
         </p>
         <p>
-          The trade-off is size: the carrier has to fit under an airline seat. That covers cats and small dogs,
-          including most puppies going to new homes. If your pet is bigger, tell us anyway and we’ll say honestly
-          what we can and can’t do.
+          The trade-off is size. On most airlines the carrier has to fit under the seat, which covers cats and
+          small dogs, including most puppies going to new homes. On select routes, larger dogs can ride in
+          the cabin too, on the floor in front of a seat bought for them. If your pet is bigger, tell us the
+          route and we’ll say honestly what we can do.
         </p>
         <h2>Who flies with your pet</h2>
         <p>
           Paws In The Sky is run by Sam Johnson in Tampa, as part of Crossroads Tech &amp; Travel Group.
-          {CREDENTIALS.usdaCertificate && <>We are registered with the USDA as an animal transporter (certificate {CREDENTIALS.usdaCertificate}).</>}
+          {CREDENTIALS.usdaCertificate && <>We are registered with the USDA as a carrier and an intermediate handler (Class T certificate {CREDENTIALS.usdaCertificate}).</>}
           {CREDENTIALS.liabilityInsurance && <> We carry {CREDENTIALS.liabilityInsurance} of liability insurance.</>}
         </p>
         <p><a href="/about/">More about us</a></p>

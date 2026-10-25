@@ -16,7 +16,11 @@ export const FAQ_BASICS: Faq[] = [
   },
   {
     q: 'What size of pet can fly in the cabin?',
-    a: 'Cats and small dogs, as long as the pet can stand and turn around in a carrier that fits under an airline seat. Each airline sets its own carrier dimensions, so we check your pet’s height, length and weight against the airline before we book. Two larger pets may each need their own carrier, and so their own courier.',
+    a: 'On most airlines, cats and small dogs: the pet has to stand and turn around in a carrier that fits under the seat. Each airline sets its own carrier dimensions, so we check your pet’s height, length and weight before we book. Two larger pets may each need their own carrier, and so their own courier.',
+  },
+  {
+    q: 'Can a bigger dog fly in the cabin?',
+    a: 'On select routes, yes: some flights let a larger dog ride in the cabin, out of a carrier, on the floor in front of a seat bought for them. Tell us where your dog is going and we’ll say whether your route is one of them. Your dog still never goes in cargo.',
   },
   {
     q: 'How will I know my pet is okay during the trip?',
@@ -29,6 +33,10 @@ export const FAQ_BASICS: Faq[] = [
   {
     q: 'Do you pick up and drop off at home?',
     a: 'The standard trip runs airport to airport: you hand your pet to us at the departure airport and collect them at arrival. Door-to-door collection and delivery is available for an added fee, shown in your quote.',
+  },
+  {
+    q: 'Do you drive pets instead of flying them?',
+    a: 'Only to and from the airports, as part of door-to-door service. We don’t offer road-only trips.',
   },
 ];
 
@@ -70,7 +78,7 @@ export const FAQ_BOOKING: Faq[] = [
   },
   {
     q: 'Are you registered with the USDA?',
-    a: 'Yes. Paws In The Sky is registered with the USDA (APHIS Animal Care) as an animal transporter. Our certificate number is in the footer of every page.',
+    a: 'Yes. Paws In The Sky is registered with the USDA (APHIS Animal Care) as both a carrier (Class T) and an intermediate handler (Class H). Our certificate number is in the footer of every page. We also carry $1,000,000 of liability insurance.',
   },
 ];
 

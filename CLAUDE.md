@@ -31,7 +31,12 @@ Business facts and credentials live in `src/consts.ts`; FAQ answers in
 - **No prices.** Every trip is quoted. Not the deposit amount, not the
   door-to-door fee.
 - **Credentials print only when filled in** (`CREDENTIALS` in consts). The
-  USDA certificate is verified; the insurance figure is not yet.
+  Class T certificate is verified; Class H and the $1M insurance are
+  confirmed by Sam; the Class H number is still to come.
+- **Larger dogs: "select routes", nothing more.** Don't name the airline
+  that allows them (Sam's call), and don't state weight limits or fees.
+- **No road-only trips.** Ground transport is only the door-to-door leg to
+  and from the airports.
 - **"Registered", not "licensed".** USDA registers transporters.
 - **Never publish the street address.** The registered address is a residence.
 - **Never put customer details in the repo.** The intake-form responses in

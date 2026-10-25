@@ -25,7 +25,18 @@ are deliberately left out.
   application filed via CitizenShipper, October 2020.
 - **Class H and insurance.** Sam's quote email of 2025-05-13 says "Duel USDA
   registrations (Class T and H)" and "$1,000,000 of liability insurance".
-  Neither is verified from a certificate — not shown on the site yet.
+  Sam confirmed both on 2026-10-25; the Class H number is to follow.
+
+## Answers from Sam, 2026-10-25
+
+- Paws In The Sky is taking bookings.
+- Contact: `hello@pawsinthesky.com` (forwarded) and (813) 921-5733.
+- Keeps every promise listed: one-business-day reply, photo and GPS
+  updates, overnight delays at no extra cost, pre-travel check-ins.
+- Booking terms as drafted are right.
+- Larger dogs: can fly in the cabin on select routes. Don't name the airline on the site.
+- Ground transport is only to and from the airports — no road-only trips.
+- Logo rights are held in writing.
 - **CitizenShipper.** Background screening activated October 2020; insurance
   verification complete 2025-06-21.
 
