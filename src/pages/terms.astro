@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { ORG } from '../consts';
+// Drawn from the terms Sam already gives customers on the Flight Nanny intake
+// form. TODO(sam): confirm, and have it reviewed, before launch. See docs/ASKS.md.
+const crumbs = [{ href: '/terms/', label: 'Booking terms' }];
+---
+<BaseLayout title="Booking Terms" description="Terms that apply when you book a pet flight with Paws In The Sky." crumbs={crumbs}>
+  <PageHero title="Booking terms" crumbs={crumbs} />
+  <section class="section">
+    <div class="wrap prose">
+      <p>These terms explain how {ORG.name}, a division of {ORG.parent} (“we”), works with you when we fly your pet. Your quote sets out the price and route for your trip; these terms cover the rest.</p>
+
+      <h2>Quotes</h2>
+      <p>A quote is based on the flights and airline pet rules available when we write it. Airfares change, so the price is fixed once you accept, pay the deposit, and we book the flights.</p>
+
+      <h2>Deposit and payment</h2>
+      <p>A deposit, stated in your quote, is due once you accept. It pays for flights we book for your trip. The balance is due when your pet is delivered. We accept Zelle, Venmo, Apple Pay, PayPal and credit cards, and cash for the balance on delivery.</p>
+
+      <h2>Cancellation</h2>
+      <p>If you cancel, the deposit is not refundable. If your pet becomes ill and can’t travel, we refund the deposit in full.</p>
+
+      <h2>Delays</h2>
+      <p>Airlines delay and cancel flights. When that happens we stay with your pet and rebook. If a delay means an overnight stay, your pet stays with us and there is no extra charge to you.</p>
+
+      <h2>Your pet’s health and paperwork</h2>
+      <p>You are responsible for your pet’s health certificate, rabies vaccination where required, and any other documents your route needs. We tell you what those are when we quote. Please tell us honestly about any health issues, medication or behaviour we should know about — it’s how we keep your pet safe and comfortable.</p>
+
+      <h2>Airline rules</h2>
+      <p>Each airline sets its own rules for pets in the cabin, including carrier size and minimum age, and can refuse a pet that doesn’t meet them. We check your pet against those rules before booking and again before travel day.</p>
+
+      <h2>Photos</h2>
+      <p>We send you photos during the trip. We only share them publicly, for example on social media, if you say we may, and we never share your name or details with them.</p>
+
+      <h2>Bookings made through CitizenShipper</h2>
+      <p>If you found us on CitizenShipper, the booking fee you paid there goes to CitizenShipper and is not part of our quote.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about these terms: <a href={`mailto:${ORG.email}`}>{ORG.email}</a>{ORG.phone && <> or {ORG.phone}</>}.</p>
+
+      <p class="muted">Last updated October 2026.</p>
+    </div>
+  </section>
+</BaseLayout>

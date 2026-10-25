@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { CREDENTIALS, ORG } from '../consts';
+
+const crumbs = [{ href: '/about/', label: 'About' }];
+---
+
+<BaseLayout
+  title="About Paws In The Sky"
+  description="Paws In The Sky is a Tampa pet flight nanny service, a division of Crossroads Tech & Travel Group, registered with the USDA as an animal transporter."
+  crumbs={crumbs}
+>
+  <PageHero eyebrow="About" title="A small, Tampa-based pet courier" crumbs={crumbs}
+    lede="Paws In The Sky is run by Sam Johnson, who does the flying, as part of Crossroads Tech & Travel Group." />
+
+  <section class="section">
+    <div class="wrap prose">
+      <p>
+        We started flying pets because the alternative, a crate in the cargo hold, was what most families
+        were being offered, and it isn’t what anyone wants for a ten-week-old puppy. A person in the seat above
+        the carrier changes the whole trip.
+      </p>
+      <p>
+        Most of our work brings puppies and kittens from breeders to new families in other states.
+        The rest is families moving, and pets whose people can’t make the trip themselves.
+      </p>
+
+      <h2>Credentials</h2>
+      <ul class="checks">
+        {CREDENTIALS.usdaCertificate && <li>Registered with the USDA, APHIS Animal Care, as an animal transporter: certificate <strong>{CREDENTIALS.usdaCertificate}</strong>.</li>}
+        {CREDENTIALS.liabilityInsurance && <li>{CREDENTIALS.liabilityInsurance} of liability insurance.</li>}
+        <li>A division of {ORG.parent}, a Florida corporation.</li>
+      </ul>
+
+      <h2>The rest of the family</h2>
+      <p>
+        Crossroads Tech &amp; Travel Group also runs <a href="https://crossroadstravel.co/">Crossroads Travel</a>,
+        a travel agency. If you are moving and need flights for the people as well as the pets, we can plan both.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        {ORG.phone && <>Call or text <a href={`tel:${ORG.phoneHref}`}>{ORG.phone}</a>, or email </>}
+        <a href={`mailto:${ORG.email}`}>{ORG.email}</a>. We’re based in {ORG.city}, {ORG.region}.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

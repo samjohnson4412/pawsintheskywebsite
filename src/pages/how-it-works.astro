@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const crumbs = [{ href: '/how-it-works/', label: 'How it works' }];
+---
+
+<BaseLayout
+  title="How Pet Flight Nanny Service Works"
+  description="From quote to hand-off: how Paws In The Sky plans, books and flies your pet in the airline cabin, step by step."
+  crumbs={crumbs}
+>
+  <PageHero
+    eyebrow="Step by step"
+    title="How a trip works"
+    lede="Most trips are booked two or more weeks out. Here is everything that happens between your first message and your pet arriving."
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="wrap prose">
+      <ol class="steps">
+        <li>
+          <h3>You send a quote request</h3>
+          <p>Where your pet is, where they’re going, roughly when, and their breed, age and weight. Sam reads every request personally.</p>
+        </li>
+        <li>
+          <h3>We send a quote for the whole trip</h3>
+          <p>One price covering our flights, the airline’s in-cabin pet fee and our time, with door-to-door service shown separately. If your pet is too big for the cabin, or the timing won’t work, we say so here.</p>
+        </li>
+        <li>
+          <h3>You accept, and a deposit secures the flights</h3>
+          <p>We book confirmed flights and send you the flight numbers and arrival time. The rest is paid when your pet is delivered.</p>
+        </li>
+        <li>
+          <h3>You fill in a short questionnaire about your pet</h3>
+          <p>Medications, health issues, diet, how they handle strangers and travel, and who else should get updates. Skip anything you don’t know yet — a breeder’s buyer often hasn’t met the puppy.</p>
+        </li>
+        <li>
+          <h3>You book the vet</h3>
+          <p>Your pet needs a health certificate, usually issued within 10 days of travel, and a rabies vaccination if they’re old enough. <a href="/preparing-your-pet/">What to prepare</a>.</p>
+        </li>
+        <li>
+          <h3>We check in before travel day</h3>
+          <p>A week out and again the day before: weather, timings, the pet’s current size, and where exactly we’re meeting.</p>
+        </li>
+        <li>
+          <h3>Travel day</h3>
+          <p>We collect your pet at the departure airport, or at your door. Through security, onto the plane, under the seat. You get photos and tracking the whole way.</p>
+        </li>
+        <li>
+          <h3>Hand-off</h3>
+          <p>We hand your pet to whoever is collecting at the arrival airport, or deliver to the door. The balance is settled then.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

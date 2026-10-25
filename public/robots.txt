@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /quote/thanks/
+
+Sitemap: https://pawsinthesky.com/sitemap-index.xml

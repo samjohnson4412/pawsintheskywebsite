@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { ORG } from '../../consts';
+---
+<BaseLayout title="Thanks — We’ve Got Your Request" description="Your quote request has been sent to Paws In The Sky." noindex>
+  <PageHero eyebrow="Request sent" title="Thank you — we’ve got it." lede="Sam will reply personally, usually within one business day. Check your spam folder if you haven’t heard from us by then.">
+    <div class="btn-row">
+      <a class="btn btn--light" href="/preparing-your-pet/">What your pet will need</a>
+      <a class="btn btn--ghost" href="/faq/">Read the FAQ</a>
+    </div>
+  </PageHero>
+  <section class="section">
+    <div class="wrap prose">
+      <p>Travelling soon? {ORG.phone ? <>Call or text <a href={`tel:${ORG.phoneHref}`}>{ORG.phone}</a>.</> : <>Email <a href={`mailto:${ORG.email}`}>{ORG.email}</a>.</>}</p>
+    </div>
+  </section>
+</BaseLayout>

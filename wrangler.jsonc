@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pawsinthesky",
+  "compatibility_date": "2026-09-13",
+
+  // A small Worker handles the quote-request form; everything else is the
+  // static Astro build served straight from Cloudflare's edge.
+  "main": "./worker/index.ts",
+
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    // Only /api/* wakes the Worker. Pages never do, so they cost nothing.
+    "run_worker_first": ["/api/*"]
+  },
+
+  // Quote requests are emailed through Cloudflare Email Routing. Sending to a
+  // *verified destination address* is free on every plan. pawsinthesky.com
+  // has no other mail, so Email Routing runs on the apex — see CLOUDFLARE.md.
+  "send_email": [
+    {
+      "name": "INQUIRY_EMAIL",
+      "destination_address": "sam@crossroadstechnology.co"
+    }
+  ],
+
+  "vars": {
+    // Must be on the Email Routing domain.
+    "INQUIRY_FROM": "website@pawsinthesky.com",
+    // Must match destination_address above, and be verified in Email Routing.
+    "INQUIRY_TO": "sam@crossroadstechnology.co"
+  }
+}

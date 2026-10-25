@@ -1,0 +1,49 @@
+---
+/** Interior-page header: sky band, breadcrumbs, H1, lede and actions. */
+import type { Crumb } from '../layouts/BaseLayout.astro';
+interface Props { eyebrow?: string; title: string; lede?: string; crumbs?: Crumb[] }
+const { eyebrow, title, lede, crumbs = [] } = Astro.props;
+---
+<section class="hero">
+  <svg class="orbit" viewBox="0 0 600 300" aria-hidden="true">
+    <ellipse cx="300" cy="150" rx="290" ry="70" transform="rotate(-8 300 150)" />
+  </svg>
+  <div class="wrap inner">
+    {crumbs.length > 0 && (
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          {crumbs.map((c, i) => (
+            <li>{i === crumbs.length - 1 ? <span aria-current="page">{c.label}</span> : <a href={c.href}>{c.label}</a>}</li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative; overflow: hidden;
+    background: radial-gradient(120% 140% at 85% 0%, #3d86c8 0%, #2d61ad 40%, #0f2a52 100%);
+    color: var(--white);
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  .inner { position: relative; }
+  .eyebrow { color: #a9dcf3; }
+  h1 { max-width: 20ch; }
+  .lede { color: rgb(255 255 255 / 0.85); }
+  .hero :global(.btn-row) { margin-top: 1.75rem; }
+  .hero :global(.btn--ghost) { color: var(--white); }
+  .hero :global(.btn--ghost:hover) { background: rgb(255 255 255 / 0.1); color: var(--white); }
+  /* The orbit swoosh from the logo, drawn in CSS-sized SVG. No photography. */
+  .orbit {
+    position: absolute; right: -8%; top: 50%; translate: 0 -50%;
+    width: min(70%, 760px); fill: none; stroke: #8fd0ef; stroke-width: 3; opacity: 0.35; pointer-events: none;
+  }
+  @media (max-width: 700px) { .orbit { display: none; } }
+</style>

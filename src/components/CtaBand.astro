@@ -1,0 +1,25 @@
+---
+import { ORG } from '../consts';
+interface Props { title?: string; body?: string; href?: string; label?: string }
+const {
+  title = 'Tell us who’s flying, and where.',
+  body = 'Two minutes on the form. Sam replies personally with a flight plan and a price for the whole trip.',
+  href = '/quote/',
+  label = 'Get a quote',
+} = Astro.props;
+---
+<section class="section section--navy cta">
+  <div class="wrap center">
+    <h2>{title}</h2>
+    <p class="lede">{body}</p>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn" href={href}>{label}</a>
+      {ORG.phone ? <a class="btn btn--ghost" href={`tel:${ORG.phoneHref}`}>Call or text {ORG.phone}</a>
+        : <a class="btn btn--ghost" href={`mailto:${ORG.email}`}>Email us</a>}
+    </div>
+  </div>
+</section>
+<style>
+  .cta .btn--ghost { color: var(--white); }
+  .cta .btn--ghost:hover { background: rgb(255 255 255 / 0.1); color: var(--white); }
+</style>

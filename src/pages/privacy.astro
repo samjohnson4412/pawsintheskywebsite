@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { ORG } from '../consts';
+const crumbs = [{ href: '/privacy/', label: 'Privacy' }];
+---
+<BaseLayout title="Privacy Policy" description="How Paws In The Sky handles the information you share with us." crumbs={crumbs}>
+  <PageHero title="Privacy policy" crumbs={crumbs} />
+  <section class="section">
+    <div class="wrap prose">
+      <p><strong>Short version:</strong> we use what you tell us to fly your pet. We don’t sell it, rent it, or use it for anyone else’s marketing.</p>
+
+      <h2>What we collect</h2>
+      <p>When you send a quote request, we receive what you enter: your name, contact details, and details of your pet and trip. It arrives as an email to us. When you book, we also collect what the trip needs, such as the names and phone numbers of the people handing over and collecting your pet, your pet’s health information, and their date of birth for the airline.</p>
+
+      <h2>How we use it</h2>
+      <p>To reply to you, book flights, keep you and the people you name updated during the trip, and take payment.</p>
+
+      <h2>Who we share it with</h2>
+      <p>Only the airlines we book with, and the service providers that run this website, our email and our payments. Each has its own privacy policy.</p>
+
+      <h2>Photos of your pet</h2>
+      <p>We only post photos of your pet publicly if you say we may, and never with your name or details.</p>
+
+      <h2>Cookies and analytics</h2>
+      <p>This website does not set advertising or tracking cookies.</p>
+
+      <h2>Your choices</h2>
+      <p>You can ask to see, correct or delete the information we hold about you by emailing <a href={`mailto:${ORG.email}`}>{ORG.email}</a>. Some records must be kept for legal and accounting reasons.</p>
+
+      <p class="muted">Last updated October 2026.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqList from '../components/FaqList.astro';
+import { CREDENTIALS } from '../consts';
+import { FAQ_BASICS } from '../data/faqs';
+
+const INCLUDED = [
+  { title: 'In the cabin, never cargo', body: 'Your pet rides in a carrier at our feet for the whole flight, with a person beside them who is there only for them.' },
+  { title: 'Updates the whole way', body: 'GPS tracking and photos from pickup to hand-off, sent to you and anyone else you name.' },
+  { title: 'Confirmed flights', body: 'You know the flight numbers and arrival time before travel day, so whoever is collecting can plan.' },
+  { title: 'Delays covered', body: 'If a cancellation strands us overnight, your pet stays with us and you pay nothing extra.' },
+];
+
+const faqs = FAQ_BASICS.slice(0, 5);
+---
+
+<BaseLayout
+  title="In-Cabin Pet Flight Nanny Service"
+  description="Paws In The Sky flies your dog or cat in the airline cabin — never cargo — with a USDA-registered courier, GPS tracking and photo updates. Based in Tampa, flying across the U.S."
+  faqs={faqs}
+>
+  <section class="home-hero">
+    <div class="wrap grid-hero">
+      <div>
+        <p class="eyebrow">Pet flight nanny · Tampa, FL</p>
+        <h1>Your pet flies in the cabin, with a person, the whole way.</h1>
+        <p class="lede">
+          We fly with your dog or cat as a passenger: in a carrier at our feet, never in cargo.
+          You get photo updates and live tracking from pickup to the hand-off at the other end.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="/quote/">Get a quote</a>
+          <a class="btn btn--ghost" href="/how-it-works/">How it works</a>
+        </div>
+        <p class="reassure">
+          {CREDENTIALS.usdaCertificate && <span class="badge">USDA-registered transporter · {CREDENTIALS.usdaCertificate}</span>}
+        </p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 420 320">
+          <defs>
+            <linearGradient id="sky" x1="0" x2="1"><stop offset="0" stop-color="#48abda" /><stop offset="1" stop-color="#2d61ad" /></linearGradient>
+          </defs>
+          <circle cx="210" cy="160" r="128" fill="#e5eef9" />
+          <ellipse cx="210" cy="168" rx="200" ry="52" transform="rotate(-10 210 168)" fill="none" stroke="url(#sky)" stroke-width="7" stroke-linecap="round" stroke-dasharray="560 70" />
+          <g fill="url(#sky)" transform="translate(150 92)">
+            <ellipse cx="30" cy="20" rx="13" ry="18" /><ellipse cx="90" cy="20" rx="13" ry="18" />
+            <ellipse cx="4" cy="58" rx="11" ry="15" transform="rotate(-20 4 58)" /><ellipse cx="116" cy="58" rx="11" ry="15" transform="rotate(20 116 58)" />
+            <path d="M60 52c-22 0-42 28-42 45 0 14 13 17 22 14s12-6 20-6 11 3 20 6 22 0 22-14c0-17-20-45-42-45z" />
+          </g>
+          <g transform="translate(330 104) rotate(-14)" fill="#2d61ad">
+            <path d="M-34 0c0-4 4-6 10-6h40l14-14h8l-6 14h14l6-6h5l-3 12 3 12h-5l-6-6h-14l6 14h-8l-14-14h-40c-6 0-10-2-10-6z" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What every trip includes</p>
+        <h2>One courier, one pet, one flight plan you can see.</h2>
+      </div>
+      <div class="grid">
+        {INCLUDED.map((i) => (
+          <div class="card"><h3>{i.title}</h3><p>{i.body}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap grid grid--2 split">
+      <div>
+        <p class="eyebrow">Who we fly for</p>
+        <h2>New puppies, moving families, and the breeders in between.</h2>
+        <p>
+          Most of our trips bring a puppy or kitten from a breeder to a new family in another state.
+          Others move a family’s cat or dog when a plane ticket for the whole household doesn’t line up,
+          or when the pet is too precious to send as freight.
+        </p>
+        <p>
+          Breeders: we keep you and the buyer updated from the same trip, so nobody is chasing anyone for news.
+          <a href="/breeders/">Working with breeders</a>.
+        </p>
+      </div>
+      <ol class="steps">
+        <li><h3>Tell us about the trip</h3><p>Where from, where to, when, and your pet’s size.</p></li>
+        <li><h3>Get a quote for the whole trip</h3><p>Flights, the airline’s pet fee and our time, in one number.</p></li>
+        <li><h3>Book the vet</h3><p>Your pet needs a health certificate, usually within 10 days of travel.</p></li>
+        <li><h3>Hand off, then follow along</h3><p>Photos and tracking until your pet is in the arms of whoever is collecting.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <FaqList faqs={faqs} />
+
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .home-hero { padding-block: clamp(3rem, 7vw, 6rem); background: linear-gradient(180deg, var(--white), var(--sand-100)); }
+  .grid-hero { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
+  .home-hero h1 { max-width: 17ch; }
+  .reassure { margin-top: 1.5rem; }
+  .art svg { width: 100%; max-width: 440px; display: block; margin-inline: auto; }
+  @media (max-width: 860px) {
+    .grid-hero { grid-template-columns: 1fr; }
+    .art { max-width: 280px; margin-inline: auto; order: -1; }
+  }
+  .split { align-items: center; gap: 2.5rem; }
+</style>

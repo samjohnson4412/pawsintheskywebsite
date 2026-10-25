@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+
+const crumbs = [{ href: '/breeders/', label: 'Breeders' }];
+---
+
+<BaseLayout
+  title="Puppy & Kitten Flight Nanny for Breeders"
+  description="In-cabin flight nanny service for breeders delivering puppies and kittens to new families across the U.S. Updates to breeder and buyer, airline rules checked for you."
+  crumbs={crumbs}
+>
+  <PageHero
+    eyebrow="For breeders"
+    title="Getting your puppies home, in the cabin"
+    lede="Most of our trips carry a puppy or kitten from a breeder to a new family. We work for both of you on the same trip."
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="wrap grid grid--2 top">
+      <div class="prose">
+        <h2>How we work with breeders</h2>
+        <ul class="checks">
+          <li><strong>One trip, two clients kept informed.</strong> You and the buyer both get the photos and tracking. Whoever is paying, the other side isn’t left guessing.</li>
+          <li><strong>We check age and size against the airline.</strong> Federal rules require puppies and kittens to be at least 8 weeks old and weaned. Some airlines set a later minimum, and a fast-growing puppy can outgrow a carrier between booking and travel. We confirm both before we book, and again the week before.</li>
+          <li><strong>The buyer doesn’t need to know the puppy yet.</strong> Our questionnaire lets them skip what they can’t answer; we fill the gaps with you.</li>
+          <li><strong>Health certificates timed right.</strong> We tell you the window for your route so the vet visit lands inside it.</li>
+        </ul>
+        <h2>Regular shipments</h2>
+        <p>
+          If you send puppies out of state regularly, tell us your usual airports and litter timing.
+          It helps us plan flights earlier, and earlier is cheaper for your buyers.
+        </p>
+      </div>
+      <div>
+        <h2 class="h3">Quote a delivery</h2>
+        <QuoteForm id="breeder-form" role="Breeder" compact />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .top { align-items: start; gap: 2.5rem; }
+  .top h2:first-child { margin-top: 0; }
+  .h3 { font: 650 var(--step-1)/1.2 var(--font-body); margin-bottom: 1rem; }
+</style>

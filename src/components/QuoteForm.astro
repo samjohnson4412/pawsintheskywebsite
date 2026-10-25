@@ -1,0 +1,147 @@
+---
+/**
+ * The quote-request form. Posts to the Worker at /api/quote, which emails it
+ * and redirects to /quote/thanks/. No JavaScript required.
+ *
+ * It asks only what Sam needs to price a trip: who, where, when, and the
+ * pet's size. The detailed pre-flight questionnaire (temperament, meds,
+ * vet details) is sent after booking, as it always has been.
+ *
+ * `compact` keeps it to the essentials, for the foot of content pages.
+ */
+interface Props { compact?: boolean; id?: string; role?: string }
+const { compact = false, id = 'quote-form', role = '' } = Astro.props;
+
+const ROLES = ['Pet owner (sending)', 'Pet owner (receiving)', 'Breeder', 'Rescue or shelter', 'Other'];
+const SPECIES = ['Dog', 'Cat', 'Other'];
+const HANDOFF = [
+  'Airport to airport',
+  'Door to door',
+  'Not sure yet',
+];
+---
+
+<form class="quote-form" id={id} method="post" action="/api/quote">
+  <input type="hidden" name="page" value={Astro.url.pathname} />
+  <input type="hidden" name="t" value="" data-started />
+  <!-- Honeypot: invisible to people, irresistible to bots. -->
+  <div class="hp" aria-hidden="true">
+    <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for={`${id}-name`}>Your name</label>
+      <input id={`${id}-name`} name="name" autocomplete="name" required />
+    </div>
+    <div class="field">
+      <label for={`${id}-email`}>Email</label>
+      <input id={`${id}-email`} name="email" type="email" autocomplete="email" required />
+    </div>
+    <div class="field">
+      <label for={`${id}-phone`}>Phone <span class="hint">(for flight-day texts)</span></label>
+      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" />
+    </div>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for={`${id}-from`}>Flying from</label>
+      <input id={`${id}-from`} name="from" placeholder="e.g. Tampa (TPA)" required />
+    </div>
+    <div class="field">
+      <label for={`${id}-to`}>Flying to</label>
+      <input id={`${id}-to`} name="to" placeholder="City or airport" required />
+    </div>
+    <div class="field">
+      <label for={`${id}-when`}>When?</label>
+      <input id={`${id}-when`} name="when" placeholder="Date, or a rough window" />
+    </div>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for={`${id}-species`}>Dog or cat?</label>
+      <select id={`${id}-species`} name="species">
+        {SPECIES.map((s) => <option>{s}</option>)}
+      </select>
+    </div>
+    <div class="field">
+      <label for={`${id}-breed`}>Breed</label>
+      <input id={`${id}-breed`} name="breed" placeholder="e.g. Corgi" />
+    </div>
+    <div class="field">
+      <label for={`${id}-count`}>How many pets?</label>
+      <input id={`${id}-count`} name="count" inputmode="numeric" value="1" />
+    </div>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for={`${id}-age`}>Age on travel day</label>
+      <input id={`${id}-age`} name="age" placeholder="e.g. 10 weeks" />
+    </div>
+    <div class="field">
+      <label for={`${id}-weight`}>Weight now <span class="hint">(roughly)</span></label>
+      <input id={`${id}-weight`} name="weight" placeholder="e.g. 8 lbs" />
+    </div>
+    <div class="field">
+      <label for={`${id}-role`}>You are the…</label>
+      <select id={`${id}-role`} name="role">
+        {ROLES.map((r) => <option selected={r === role}>{r}</option>)}
+      </select>
+    </div>
+  </div>
+
+  {!compact && (
+    <>
+      <fieldset class="field">
+        <legend>Handoff</legend>
+        <p class="hint">Meet us at the airports, or we collect and deliver at the door for an added fee.</p>
+        <div class="choices">
+          {HANDOFF.map((h, i) => (
+            <label class="choice"><input type="radio" name="handoff" value={h} checked={i === 0} /><span>{h}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div class="field-row">
+        <div class="field">
+          <label for={`${id}-health`}>Health certificate</label>
+          <select id={`${id}-health`} name="health_cert">
+            <option>Not yet — vet visit to book</option>
+            <option>Vet visit booked</option>
+            <option>Already have one</option>
+            <option>Not sure what this is</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for={`${id}-source`}>How did you find us?</label>
+          <input id={`${id}-source`} name="source" />
+        </div>
+      </div>
+    </>
+  )}
+
+  <div class="field">
+    <label for={`${id}-notes`}>Anything else?</label>
+    <textarea id={`${id}-notes`} name="notes" rows={compact ? 3 : 5}
+      placeholder="Health issues, medications, how they handle travel, a deadline you’re working to…"></textarea>
+  </div>
+
+  <button class="btn" type="submit">Send my quote request</button>
+  <p class="hint small">Sam replies personally, usually within one business day. We never share or sell your details.</p>
+</form>
+
+<style>
+  .quote-form { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); box-shadow: var(--shadow); color: var(--ink); }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .small { margin: 0.75rem 0 0; font-size: var(--step--1); color: var(--color-text-muted); }
+  .quote-form .btn { width: 100%; }
+  @media (min-width: 640px) { .quote-form .btn { width: auto; } }
+</style>
+
+<script is:inline>
+  // Stamp the time the form was shown; the Worker drops instant submissions.
+  document.querySelectorAll('input[data-started]').forEach(function (el) { el.value = String(Date.now()); });
+</script>

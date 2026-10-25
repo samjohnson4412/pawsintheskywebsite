@@ -1,0 +1,87 @@
+---
+import Logo from './Logo.astro';
+import { NAV, NAV_CTA, ORG } from '../consts';
+const { pathname } = Astro.url;
+const isCurrent = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label={`${ORG.name} — home`}><Logo /></a>
+
+    <!-- A <details> menu: works on phones with JavaScript off. -->
+    <details class="menu">
+      <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+      <nav aria-label="Main">
+        <ul>
+          {NAV.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+            </li>
+          ))}
+          <li class="cta"><a class="btn" href={NAV_CTA.href}>{NAV_CTA.label}</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgb(255 255 255 / 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.75rem; }
+  .brand { display: inline-flex; text-decoration: none; }
+
+  .menu summary { display: none; }
+  .menu nav ul { display: flex; align-items: center; gap: 1.4rem; list-style: none; margin: 0; padding: 0; }
+  .menu nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 600; font-size: var(--step--1); }
+  .menu nav a:not(.btn):hover, .menu nav a[aria-current='page'] { color: var(--cyan-700); }
+  .menu .btn { padding: 0.6em 1.15em; font-size: var(--step--1); }
+
+  /* On wide screens the details element is always open, and its summary hidden. */
+  @media (min-width: 961px) {
+    .menu { display: contents; }
+    .menu > nav { display: block !important; }
+  }
+
+  @media (max-width: 960px) {
+    .menu summary {
+      display: grid; gap: 5px; place-content: center;
+      width: 44px; height: 44px; cursor: pointer; list-style: none; border-radius: 8px;
+    }
+    .menu summary::-webkit-details-marker { display: none; }
+    .menu summary span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .menu[open] summary span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu[open] summary span:nth-child(2) { opacity: 0; }
+    .menu[open] summary span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .menu nav {
+      position: absolute; left: 0; right: 0; top: 100%;
+      background: var(--sand-50); border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 12px 24px rgb(15 42 82 / 0.08);
+    }
+    .menu nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: 0.5rem 1rem 1rem; }
+    .menu nav li a:not(.btn) { display: block; padding: 0.8rem 0.25rem; font-size: var(--step-0); border-bottom: 1px solid var(--color-border); }
+    .menu .cta { margin-top: 1rem; }
+    .menu .cta .btn { width: 100%; font-size: var(--step-0); }
+  }
+</style>
+
+<script is:inline>
+  // Wide screens: keep the menu open so the nav shows. Phones: close it after
+  // a tap so an in-page link doesn't leave the panel covering the page.
+  (function () {
+    var menu = document.querySelector('.site-header .menu');
+    if (!menu) return;
+    var wide = window.matchMedia('(min-width: 961px)');
+    function sync() { menu.open = wide.matches; }
+    sync();
+    wide.addEventListener('change', sync);
+    menu.addEventListener('click', function (e) {
+      if (!wide.matches && e.target.closest('a')) menu.open = false;
+    });
+  })();
+</script>

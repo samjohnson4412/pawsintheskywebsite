@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { ALL_FAQS, FAQ_BASICS, FAQ_BOOKING, FAQ_PREP } from '../data/faqs';
+
+const crumbs = [{ href: '/faq/', label: 'FAQ' }];
+---
+
+<BaseLayout
+  title="Pet Flight Nanny FAQ"
+  description="Answers about in-cabin pet flights: size limits, paperwork, updates, delays, pricing, deposits and cancellations."
+  crumbs={crumbs}
+  faqs={ALL_FAQS}
+>
+  <PageHero eyebrow="FAQ" title="Questions people ask" crumbs={crumbs}
+    lede="Can’t find yours? Call, text or send a quote request with the question in the notes." />
+  <FaqList faqs={FAQ_BASICS} title="The service" />
+  <FaqList faqs={FAQ_PREP} title="Preparing your pet" />
+  <FaqList faqs={FAQ_BOOKING} title="Booking and payment" />
+  <CtaBand />
+</BaseLayout>

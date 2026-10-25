@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { FAQ_PREP } from '../data/faqs';
+
+const crumbs = [{ href: '/preparing-your-pet/', label: 'Preparing your pet' }];
+---
+
+<BaseLayout
+  title="Preparing Your Pet to Fly"
+  description="Health certificate, rabies vaccination, age and carrier size: what your dog or cat needs before an in-cabin flight with Paws In The Sky."
+  crumbs={crumbs}
+  faqs={FAQ_PREP}
+>
+  <PageHero
+    eyebrow="Before travel day"
+    title="Preparing your pet to fly"
+    lede="Most of this is one vet visit. We tell you the exact rules for your route when we quote, but here is what to expect."
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>The checklist</h2>
+      <ul class="checks">
+        <li><strong>Health certificate (CVI).</strong> Issued by a licensed vet, usually within 10 days of travel. Book the appointment for the week before the flight.</li>
+        <li><strong>Rabies vaccination</strong>, if your pet is old enough to have one. Bring the certificate to the vet visit.</li>
+        <li><strong>Age.</strong> At least 8 weeks old and weaned. Some airlines want older; we check yours.</li>
+        <li><strong>Size.</strong> Your pet must be able to stand and turn around in a carrier that fits under the seat. We’ll ask for height (floor to shoulders), length (chest to base of tail) and weight a few weeks before travel.</li>
+        <li><strong>Medications and diet.</strong> Tell us what they take and when, and any food they can’t have.</li>
+        <li><strong>Who’s collecting.</strong> A name and phone number for the person meeting us, plus anyone else who wants updates.</li>
+      </ul>
+      <p class="muted">
+        Rules change and vary by airline and state. Your quote and our pre-travel check-in are the final word for your trip.
+      </p>
+    </div>
+  </section>
+
+  <FaqList faqs={FAQ_PREP} title="Questions about preparing" />
+  <CtaBand />
+</BaseLayout>

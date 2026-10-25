@@ -1,0 +1,14 @@
+---
+/**
+ * The Paws In The Sky Transport logo, from Sam's own brand files
+ * (Drive: "Paws In The Sky Transport" folder). See docs/IMAGE-CREDITS.md.
+ */
+interface Props { tone?: 'light' | 'dark' }
+const { tone = 'dark' } = Astro.props;
+const src = tone === 'light' ? '/brand/logo-white.png' : '/brand/logo.png';
+---
+<img class="logo" src={src} alt="Paws In The Sky Transport" width="640" height="224" />
+<style>
+  .logo { display: block; width: auto; height: 60px; }
+  @media (max-width: 600px) { .logo { height: 44px; } }
+</style>

@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FaqList from '../components/FaqList.astro';
+import { CREDENTIALS } from '../consts';
+import { FAQ_BASICS } from '../data/faqs';
+
+const crumbs = [{ href: '/flight-nanny/', label: 'Flight nanny' }];
+const faqs = FAQ_BASICS.filter((f) => /size|delayed|home/i.test(f.q));
+---
+
+<BaseLayout
+  title="In-Cabin Pet Flight Nanny"
+  description="A courier flies with your dog or cat in the airline cabin, never cargo. Airport or door-to-door hand-off, GPS tracking, photo updates and delays covered."
+  crumbs={crumbs}
+  faqs={faqs}
+>
+  <PageHero
+    eyebrow="The service"
+    title="A flight nanny for your dog or cat"
+    lede="We buy a seat, your pet flies in a carrier at our feet, and we hand them over at the other end. One person, responsible for one pet, door to door if you want it."
+    crumbs={crumbs}
+  >
+    <div class="btn-row"><a class="btn btn--light" href="/quote/">Get a quote</a></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap grid grid--2 top">
+      <div class="prose">
+        <h2>What’s included</h2>
+        <ul class="checks">
+          <li><strong>Travel in the cabin, not cargo.</strong> Your pet rides under the seat in front of us for every leg.</li>
+          <li><strong>GPS tracking and photo updates</strong> through the whole trip, to you and anyone else you name.</li>
+          <li><strong>Confirmed flights.</strong> You know the flight numbers and arrival time before travel day.</li>
+          <li><strong>Delays covered.</strong> If we’re stuck overnight, your pet stays with us and you pay nothing extra.</li>
+          <li><strong>Airport hand-off at both ends.</strong> Door-to-door collection and delivery is available as an add-on.</li>
+          <li><strong>The airline paperwork.</strong> We book the pet’s place on the flight and check the carrier against the airline’s rules.</li>
+        </ul>
+      </div>
+      <div class="prose">
+        <h2>Why a person instead of cargo</h2>
+        <p>
+          In the cabin your pet is at normal cabin temperature and pressure, a few inches from someone
+          watching them. There’s no crate in a hold, no warehouse wait, no handover between cargo crews.
+        </p>
+        <p>
+          The trade-off is size: the carrier has to fit under an airline seat. That covers cats and small dogs,
+          including most puppies going to new homes. If your pet is bigger, tell us anyway and we’ll say honestly
+          what we can and can’t do.
+        </p>
+        <h2>Who flies with your pet</h2>
+        <p>
+          Paws In The Sky is run by Sam Johnson in Tampa, as part of Crossroads Tech &amp; Travel Group.
+          {CREDENTIALS.usdaCertificate && <>We are registered with the USDA as an animal transporter (certificate {CREDENTIALS.usdaCertificate}).</>}
+          {CREDENTIALS.liabilityInsurance && <> We carry {CREDENTIALS.liabilityInsurance} of liability insurance.</>}
+        </p>
+        <p><a href="/about/">More about us</a></p>
+      </div>
+    </div>
+  </section>
+
+  <FaqList faqs={faqs} title="Common questions" />
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .top { align-items: start; gap: 2.5rem; }
+  .top h2:first-child { margin-top: 0; }
+</style>

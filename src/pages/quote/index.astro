@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { ORG } from '../../consts';
+
+const crumbs = [{ href: '/quote/', label: 'Get a quote' }];
+---
+
+<BaseLayout
+  title="Get a Pet Flight Quote"
+  description="Tell Paws In The Sky where your pet is flying. Sam replies personally with flights and a price for the whole trip, usually within one business day."
+  crumbs={crumbs}
+>
+  <PageHero
+    eyebrow="Free quote"
+    title="Get a quote"
+    lede="Share what you know now; rough is fine. Sam reads every request and replies, usually within one business day."
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="wrap layout">
+      <div>
+        <div class="notice" id="form-error" hidden>
+          <strong>That didn’t send.</strong>
+          <span data-msg>Please try again, or email <a href={`mailto:${ORG.email}`}>{ORG.email}</a>.</span>
+        </div>
+        <QuoteForm id="quote-form" />
+      </div>
+      <aside>
+        <div class="card">
+          <h2 class="h3">Rather talk?</h2>
+          <p>
+            {ORG.phone && <><a href={`tel:${ORG.phoneHref}`}>{ORG.phone}</a><br /></>}
+            <a href={`mailto:${ORG.email}`}>{ORG.email}</a>
+          </p>
+          <p class="muted">Calls and texts welcome. If we miss you, we’ll call back.</p>
+        </div>
+        <div class="card">
+          <h2 class="h3">What happens next</h2>
+          <ol class="next">
+            <li>We check flights, and the airline’s rules for your pet’s size and age.</li>
+            <li>You get one price for the whole trip.</li>
+            <li>Nothing is booked until you accept and pay the deposit.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .layout { display: grid; gap: 2rem; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  aside { display: grid; gap: 1rem; }
+  .h3 { font: 650 var(--step-1)/1.2 var(--font-body); }
+  .next { padding-left: 1.2rem; margin: 0; }
+</style>
+
+<script is:inline>
+  // The Worker redirects back here with ?error=… when something goes wrong.
+  (function () {
+    var err = new URLSearchParams(location.search).get('error');
+    if (!err) return;
+    var box = document.getElementById('form-error');
+    if (err === 'missing') box.querySelector('[data-msg]').textContent = 'We need your name and a valid email address to reply.';
+    box.hidden = false;
+  })();
+</script>
